@@ -1,10 +1,5 @@
 "use strict";
 
-const user = {
-    id : ["kjy95613", "oNeL"],
-    pwd : ["1234", "123456"],
-};
-
 const output = {
     home : (req, res) => {
         res.render("home/index");
@@ -15,23 +10,28 @@ const output = {
     },
 }
 
-const process = {
-    login : (req, res) =>{
-        const id = req.body.id,
-            pwd = req.body.pwd;
+const user = {
+    id : ["kjy95613", "oNeL"],
+    pwd : ["1234", "123456"],
+};
 
-            if(user.id.includes(id)){
-                const idx = user.id.indexOf(id);
-                if(user.pwd[idx] === pwd){
-                    return res.json({
-                        success: true,
-                    });
-                }
+const process = {
+    login : (req, res) => {
+         const id = req.body.id,
+            pwd = req.body.pwd;
+        console.log(req.body);
+        if(user.id.includes(id)){
+            const idx = user.id.indexOf(id);
+            if(user.pwd[idx] === pwd){
+                 return res.json({
+                    success: true,
+                });
             }
-            return res.json({
-                success: false,
-                msg: "로그인에 실패하셨습니다.",
-            });
+        }
+        return res.json({
+            success: false,
+            msg: "로그인에 실패하셨습니다.",
+        });
     },
 };
 
