@@ -3,6 +3,7 @@
 //모듈
 const express = require('express');
 const app = express();
+const bodyParser = require("body-parser");
 
 const home = require("./src/routes/home");
 
@@ -13,7 +14,8 @@ app.set("view engine", "ejs");
 //라우팅
 app.use(express.static(`${__dirname}/src/public`));
 app.use("/", home); //use -> 미들 웨어를 등록해주는 메서드.
-
+app.use(bodyParser.json);
+app.use(bodyParser.urlencoded({ extended : true}));
 
 module.exports = app;
 
