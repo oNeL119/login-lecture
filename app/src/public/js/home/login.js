@@ -13,4 +13,14 @@ function login() {
         pwd : pwd.value,
     };
     console.log(req);
+
+    fetch("/login", {
+        method : "POST",
+        
+        //JSON타입이라고 알려준다.
+        headers : {
+            "Content-Type": "application/json",
+        },
+        body :JSON.stringify(req),
+    });
 }
