@@ -16,11 +16,15 @@ function login() {
 
     fetch("/login", {
         method : "POST",
-        
+
         //JSON타입이라고 알려준다.
         headers : {
             "Content-Type": "application/json",
         },
         body :JSON.stringify(req),
-    });
+    })
+        .then((res) => res.json())
+        .then((res) => {
+
+        });
 }
